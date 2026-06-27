@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prom?</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff9ecf,#ffd6e7,#fff0f6);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:white;
+    width:90%;
+    max-width:650px;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+h1{
+    font-size:3rem;
+    color:#ff3f8e;
+    margin-bottom:10px;
+}
+
+h2{
+    margin-bottom:30px;
+    color:#444;
+}
+
+.buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+button{
+    padding:18px;
+    font-size:1.05rem;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.25s;
+    background:#ff4f95;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.03);
+    background:#ff2d7a;
+}
+
+.note{
+    margin-top:30px;
+    font-size:0.9rem;
+    color:#666;
+    font-style:italic;
+}
+
+#result{
+    margin-top:30px;
+    font-size:1.2rem;
+    font-weight:bold;
+    color:#ff2d7a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🌸 Prom? 🌸</h1>
+
+<h2>Will you go to prom with me?</h2>
+
+<div class="buttons">
+
+<button onclick="correct()">
+1. Yes
+</button>
+
+<button onclick="dropkick()">
+2. Yes but only if I get to dropkick you.
+</button>
+
+<button onclick="ribs()">
+3. Yes only because I just wanna rip your ribs.
+</button>
+
+<button onclick="kick()">
+4. No, I just wanna kick you.
+</button>
+
+</div>
+
+<p class="note">
+✨ If you choose the correct answer, you earn <b>Limitless Points™</b> and get full permission to absolutely beat the shit out of me.
+</p>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+const result = document.getElementById("result");
+
+async function sendChoice(choice){
+    await fetch("https://formspree.io/f/xqevqogy", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: "Prom proposal answer",
+            choice: choice,
+            time: new Date().toLocaleString()
+        })
+    });
+}
+
+async function correct(){
+    await sendChoice("Yes");
+
+    result.innerHTML = `
+    <h2>🎉 Correct Answer! 🎉</h2>
+
+    <p>Congratulations! You earned <b>∞ Limitless Points™</b>.</p>
+
+    <p>
+    Your prize includes unlimited teasing rights and a lifetime pass to make fun of me.
+    </p>
+
+    <p>
+    Prom? ❤️
+    </p>
+    `;
+}
+
+async function dropkick(){
+    await sendChoice("Yes but only if I get to dropkick you.");
+    result.innerHTML = "Accepted. 😭 I'll try to survive the emotional damage.";
+}
+
+async function ribs(){
+    await sendChoice("Yes only because...");
+    result.innerHTML = "Accepted... I'll pretend I didn't hear that. 😂❤️";
+}
+
+async function kick(){
+    await sendChoice("No, I just wanna kick you.");
+    result.innerHTML = "❌ Wrong answer detected. The council has overruled your decision. Congratulations, you're coming to prom with me anyway. 😌❤️";
+}
+
+</script>
+
+</body>
+</html>
