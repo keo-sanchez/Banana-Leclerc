@@ -220,7 +220,7 @@ h1{font-size:45px}
 </button>
 
 <button onclick="ribs()">
-<span class="num">3</span> Yes only because I just wanna rip your ribs. 💖
+<span class="num">3</span> Yes, only because I wanna rip your ribs. 💖
 </button>
 
 <button onclick="kick()">
@@ -254,22 +254,32 @@ body:JSON.stringify({choice,time:new Date().toLocaleString()})
 
 async function correct(){
 await sendChoice("Yes");
-result.innerHTML="🎉 Correct Answer! ∞ Limitless Points ❤️";
+    <h2>🎉 Correct Answer! 🎉</h2>
+
+    <p>Congratulations! You earned <b>∞ Limitless Points™</b>.</p>
+
+    <p>
+    Your prize includes unlimited teasing rights and a lifetime pass to make fun of me.
+    </p>
+
+    <p>
+    Prom? ❤️
+    </p>
 }
 
 async function dropkick(){
 await sendChoice("Dropkick");
-result.innerHTML="🍌 Accepted...";
+result.innerHTML="🍌 Accepted...I'll pretend I didn't hear that. 😂❤️";
 }
 
 async function ribs(){
 await sendChoice("Ribs");
-result.innerHTML="💖 Accepted... save some ribs";
+result.innerHTML="💖 Accepted... but please leave at least a few ribs for me. 💀❤️";
 }
 
 async function kick(){
 await sendChoice("No");
-result.innerHTML="❌ Rejected. Prom anyway 😌";
+result.innerHTML=" Wrong answer detected. The council has overruled your decision. Congratulations, you're coming to prom with me anyway. 😌❤️";
 }
 </script>
 
