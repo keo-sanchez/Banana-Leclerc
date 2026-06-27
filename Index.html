@@ -254,17 +254,22 @@ body:JSON.stringify({choice,time:new Date().toLocaleString()})
 
 async function correct(){
 await sendChoice("Yes");
+    result.innerHTML = `
     <h2>🎉 Correct Answer! 🎉</h2>
 
-    <p>Congratulations! You earned <b>∞ Limitless Points™</b>.</p>
-
     <p>
-    Your prize includes unlimited teasing rights and a lifetime pass to make fun of me.
+    Congratulations! You have earned <b>∞ Limitless Points™</b>.
     </p>
 
     <p>
-    Prom? ❤️
+    Your prize includes unlimited teasing rights, the ability to roast me whenever you want,
+    and one complimentary dramatic dropkick into my ego.
     </p>
+
+    <p>
+    I'll probably complain the whole time, so maybe stop if I start being too dramatic. ❤️😂
+    </p>
+    `;
 }
 
 async function dropkick(){
